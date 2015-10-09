@@ -11,6 +11,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.secondline.iwasthere.client.presenter.InputPresenter;
 import com.secondline.iwasthere.shared.Disaster;
 import com.secondline.iwasthere.shared.InputField;
 
@@ -22,8 +23,11 @@ public class InputView extends Composite{
 	Map<InputField, TextBox> fields = new HashMap<InputField, TextBox>();
 	
 	ListBox disasterPicker = new ListBox();
+	
+	InputPresenter presenter;
 	public InputView(){
 		initWidget(container);
+		presenter = new InputPresenter(this);
 		Label title = new Label("I WAS THERE!");
 		Label instruction = new Label("Select a major historical event that you were totally there for. We'll come up with your story.");
 		
