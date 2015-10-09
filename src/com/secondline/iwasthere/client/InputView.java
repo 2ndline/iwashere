@@ -8,8 +8,10 @@ import java.util.Map;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.secondline.iwasthere.shared.Disaster;
 import com.secondline.iwasthere.shared.InputField;
 
 public class InputView extends Composite{
@@ -18,6 +20,8 @@ public class InputView extends Composite{
 	List<TextBox> inputs = new ArrayList<TextBox>();
 	Button generateButton = new Button("Generate excuse!");
 	Map<InputField, TextBox> fields = new HashMap<InputField, TextBox>();
+	
+	ListBox disasterPicker = new ListBox();
 	public InputView(){
 		initWidget(container);
 		Label title = new Label("I WAS THERE!");
@@ -26,6 +30,10 @@ public class InputView extends Composite{
 		container.add(title);
 		container.add(instruction);
 		
+		for(Disaster d: Disaster.values()){
+			disasterPicker.addItem(d.getTitle());
+		}
+		container.add(disasterPicker);
 		for(InputField field : InputField.values()){
 			TextBox input = new TextBox();
 			input.getElement().setPropertyString("placeholder", field.toString());
@@ -44,5 +52,9 @@ public class InputView extends Composite{
 	
 	public Map<InputField, TextBox> getFieldsMap(){
 		return fields;
+	}
+
+	public Disaster getDisaster() {
+		return Disaster.getDisasterByName(disasterPicker.getValue(disasterPicker.getSelectedIndex()));
 	}
 }
