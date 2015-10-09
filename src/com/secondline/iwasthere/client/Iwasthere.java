@@ -16,6 +16,7 @@ public class Iwasthere implements EntryPoint {
 		
 		ScrollPanel panel = new ScrollPanel();
 		RootPanel.get("container").add(panel);
-	//TODO presenter handles the rest
+		InputView mainView = new InputView();
+		panel.add(mainView);
 	}
 }
