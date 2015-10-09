@@ -40,9 +40,9 @@ public class InputPresenter {
 				HTMLPanel container = new HTMLPanel("");
 				Button cancel = new Button("Try again");
 				container.add(cancel);
-				
+
 				cancel.addClickHandler(new ClickHandler() {
-					
+
 					@Override
 					public void onClick(ClickEvent event) {
 						popup.hide();
@@ -55,12 +55,16 @@ public class InputPresenter {
 				container.add(scrollContainer);
 
 				Disaster d = view.getDisaster();
+				container.getElement().getStyle()
+						.setBackgroundImage("url(/"+d.getUrl()+")");
+				container.getElement().getStyle().setProperty("backgroundSize", "cover");
+
 				Map<InputField, TextBox> values = view.getFieldsMap();
 				HTMLPanel scriptPanel = new HTMLPanel("");
 				Label script = new Label();
 				scriptPanel.add(script);
 				scrollContainer.add(scriptPanel);
-				//Todo: set script
+				// Todo: set script
 				script.setText(d.getTitle());
 
 				Window.addResizeHandler(new ResizeHandler() {

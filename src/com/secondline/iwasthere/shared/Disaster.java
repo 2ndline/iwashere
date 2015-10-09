@@ -2,9 +2,9 @@ package com.secondline.iwasthere.shared;
 
 public enum Disaster {
 
-	NineEleven("9/11", "911.png", "New York", "Midtown"), OKC("Oklahoma City", "okc.png", "Oklahoma City", "That place"), Katrina(
-			"Hurricane Katrina", "katrina.png", "New Orleans", "I-10 overpass"), Hiroshima("Hiroshima",
-			"hiroshima.png", "Hiroshima", "that jap place"), BostonMarathon("Boston Marathon", "boston.png", "Boston", "a can of beans");
+	NineEleven("9/11", "911.jpg", "New York", "Midtown"), OKC("Oklahoma City", "okc.jpg", "Oklahoma City", "That place"), Katrina(
+			"Hurricane Katrina", "katrina.jpg", "New Orleans", "I-10 overpass"), Hiroshima("Hiroshima",
+			"hiroshima.jpg", "Hiroshima", "that jap place"), BostonMarathon("Boston Marathon Bombing", "boston.jpg", "Boston", "a can of beans");
 	String title;
 	String pictureUrl;
 	private String place;
