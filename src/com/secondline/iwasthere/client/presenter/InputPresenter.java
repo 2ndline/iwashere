@@ -56,17 +56,31 @@ public class InputPresenter {
 
 				Disaster d = view.getDisaster();
 				container.getElement().getStyle()
-						.setBackgroundImage("url(/"+d.getUrl()+")");
-				container.getElement().getStyle().setProperty("backgroundSize", "cover");
+						.setBackgroundImage("url(/" + d.getUrl() + ")");
+				container.getElement().getStyle()
+						.setProperty("backgroundSize", "cover");
 
 				Map<InputField, TextBox> values = view.getFieldsMap();
+				String job = values.get(InputField.Job).getText();
+				String employer = values.get(InputField.Employer).getText();
 				HTMLPanel scriptPanel = new HTMLPanel("");
 				Label script = new Label();
 				scriptPanel.add(script);
 				scrollContainer.add(scriptPanel);
 				// Todo: set script
-				script.setText(d.getTitle());
-
+				String scriptText = "So there I was, doing "
+						+ job
+						+ " at "
+						+ employer
+						+ ", when suddenly "
+						+ d.getTitle()
+						+ " happens. It was crazy. I'm in "
+						+ d.getPlace()
+						+ " and I just feel this jostling. So I leave and I'm by "
+						+ d.getLandmark()
+						+ " and that's when I realize that it's really bad.";
+				script.setText(scriptText);
+				script.getElement().getStyle().setColor("red");
 				Window.addResizeHandler(new ResizeHandler() {
 
 					@Override
