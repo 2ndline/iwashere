@@ -4,6 +4,7 @@ import java.util.Map;
 
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.logical.shared.ResizeEvent;
@@ -11,6 +12,7 @@ import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.ResizeLayoutPanel;
@@ -55,32 +57,22 @@ public class InputPresenter {
 				container.add(scrollContainer);
 
 				Disaster d = view.getDisaster();
-				container.getElement().getStyle()
-						.setBackgroundImage("url(/" + d.getUrl() + ")");
-				container.getElement().getStyle()
-						.setProperty("backgroundSize", "cover");
 
 				Map<InputField, TextBox> values = view.getFieldsMap();
-				String job = values.get(InputField.Job).getText();
-				String employer = values.get(InputField.Employer).getText();
+				String job = values.get(InputField.What_were_you_doing).getText();
+				String employer = values.get(InputField.Where_were_you).getText();
 				HTMLPanel scriptPanel = new HTMLPanel("");
 				Label script = new Label();
 				scriptPanel.add(script);
 				scrollContainer.add(scriptPanel);
-				// Todo: set script
-				String scriptText = "So there I was, doing "
-						+ job
-						+ " at "
-						+ employer
-						+ ", when suddenly "
-						+ d.getTitle()
-						+ " happens. It was crazy. I'm in "
-						+ d.getPlace()
-						+ " and I just feel this jostling. So I leave and I'm by "
-						+ d.getLandmark()
-						+ " and that's when I realize that it's really bad.";
+				
+				Image image = new Image();
+				image.setUrl("/"+d.getUrl());
+				image.setStyleName("pics");
+				scriptPanel.add(image);
+				String scriptText = d.getScript(job, employer);
 				script.setText(scriptText);
-				script.getElement().getStyle().setColor("red");
+				script.getElement().getStyle().setFontSize(18.0, Unit.PX);
 				Window.addResizeHandler(new ResizeHandler() {
 
 					@Override

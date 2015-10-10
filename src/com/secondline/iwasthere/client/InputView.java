@@ -7,8 +7,12 @@ import java.util.Map;
 
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment.HorizontalAlignmentConstant;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.secondline.iwasthere.client.presenter.InputPresenter;
@@ -27,8 +31,11 @@ public class InputView extends Composite{
 	InputPresenter presenter;
 	public InputView(){
 		initWidget(container);
+		container.setHorizontalAlignment(HasHorizontalAlignment.ALIGN_CENTER);
+		container.setWidth("100%");
 		presenter = new InputPresenter(this);
 		Label title = new Label("I WAS THERE!");
+		title.setStyleName("title");
 		Label instruction = new Label("Select a major historical event that you were totally there for. We'll come up with your story.");
 		
 		container.add(title);
@@ -40,7 +47,8 @@ public class InputView extends Composite{
 		container.add(disasterPicker);
 		for(InputField field : InputField.values()){
 			TextBox input = new TextBox();
-			input.getElement().setPropertyString("placeholder", field.toString());
+			String display = field.toString().replace("_", " ").concat("?");
+			input.getElement().setPropertyString("placeholder", display);
 			input.setWidth("10em");
 			inputs.add(input);
 			container.add(input);
@@ -48,6 +56,10 @@ public class InputView extends Composite{
 		}
 		
 		container.add(generateButton);
+		
+		Image steve = new Image("/steve.jpg");
+		steve.setStyleName("steve");
+		RootPanel.get("container").add(steve);
 	}
 	
 	public Button getGenerateButton(){

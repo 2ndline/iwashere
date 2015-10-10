@@ -14,9 +14,7 @@ public class Iwasthere implements EntryPoint {
 	 */
 	public void onModuleLoad() {
 		
-		ScrollPanel panel = new ScrollPanel();
-		RootPanel.get("container").add(panel);
 		InputView mainView = new InputView();
-		panel.add(mainView);
+		RootPanel.get("container").add(mainView);
 	}
 }

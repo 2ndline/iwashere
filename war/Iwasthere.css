@@ -10,6 +10,10 @@ h1 {
   text-align: center;
 }
 
+body{
+	font-size: 20px;
+}
+
 .sendButton {
   display: block;
   font-size: 16pt;
@@ -31,4 +35,21 @@ h1 {
 /** Set ids using widget.getElement().setId("idOfElement") */
 #closeButton {
   margin: 15px 6px 6px;
+}
+
+.steve{
+    width: 45%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.title{
+	font-family: Impact, Charcoal, sans-serif;
+	font-size: 50px;
+	margin-bottom: 15px;
+}
+
+.pics{
+	width: 70%;
 }
